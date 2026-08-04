@@ -1,0 +1,26 @@
+{
+  "base": {
+    "embedder": "hashing",
+    "embedder_args": {
+      "dim": 1024
+    },
+    "store": "memory",
+    "hybrid_args": {
+      "fusion": "rrf",
+      "candidate_multiplier": 4
+    }
+  },
+  "grid": {
+    "chunker": [
+      "fixed",
+      "sentence",
+      "recursive",
+      "markdown"
+    ],
+    "retriever": [
+      "bm25",
+      "dense",
+      "hybrid"
+    ]
+  }
+}

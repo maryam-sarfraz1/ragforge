@@ -1,0 +1,30 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+.venv/
+venv/
+env/
+
+.pytest_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# ragforge working directories and generated reports
+.ragforge/
+*.html
+!examples/*.html
+reports/
+
+# Vector store data
+chroma/
+qdrant_storage/
+
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,71 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "ragforge"
+version = "0.1.0"
+description = "A hybrid retrieval engine with a built-in evaluation harness — measure your RAG instead of guessing."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Laiba Mazhar" }]
+keywords = ["rag", "retrieval", "vector-database", "embeddings", "bm25", "evaluation", "information-retrieval"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Text Processing :: Indexing",
+]
+dependencies = ["numpy>=1.21"]
+
+[project.optional-dependencies]
+chroma = ["chromadb>=0.5"]
+qdrant = ["qdrant-client>=1.7"]
+st = ["sentence-transformers>=2.2"]
+serve = ["fastapi>=0.100", "uvicorn>=0.23"]
+all = [
+    "chromadb>=0.5",
+    "qdrant-client>=1.7",
+    "sentence-transformers>=2.2",
+    "fastapi>=0.100",
+    "uvicorn>=0.23",
+]
+dev = ["pytest>=7", "pytest-cov>=4", "ruff>=0.4"]
+
+[project.urls]
+Homepage = "https://github.com/laiba-mazhar/ragforge"
+Issues = "https://github.com/laiba-mazhar/ragforge/issues"
+
+[project.scripts]
+ragforge = "ragforge.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ragforge"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+# B905: every zip() here runs over sequences whose lengths are either validated
+# on the line above or constructed together, so `strict=` adds noise, not safety.
+ignore = ["B008", "SIM108", "B905"]
+
+[tool.ruff.lint.per-file-ignores]
+# One embedded CSS blob; wrapping it at 100 columns hurts more than it helps.
+"src/ragforge/report/html.py" = ["E501"]
+
+[tool.coverage.run]
+source = ["src/ragforge"]

@@ -1,0 +1,22 @@
+{
+  "name": "handbook-default",
+  "chunker": "markdown",
+  "chunker_args": {
+    "max_size": 1200,
+    "overlap": 100
+  },
+  "embedder": "hashing",
+  "embedder_args": {
+    "dim": 1024
+  },
+  "store": "memory",
+  "retriever": "hybrid",
+  "bm25_args": {
+    "k1": 1.5,
+    "b": 0.75
+  },
+  "hybrid_args": {
+    "fusion": "rrf",
+    "candidate_multiplier": 4
+  }
+}

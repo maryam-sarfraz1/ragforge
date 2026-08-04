@@ -1,0 +1,60 @@
+{"id": "q01", "query": "how do I rotate an API key?", "grades": {"api-authentication": 1.0}}
+{"id": "q02", "query": "where do I create a new API key", "grades": {"api-authentication": 1.0}}
+{"id": "q03", "query": "what scopes can an API key have", "grades": {"api-authentication": 1.0, "rbac-roles": 0.5}}
+{"id": "q04", "query": "I lost my secret, can I recover it", "grades": {"api-authentication": 1.0}}
+{"id": "q05", "query": "why am I getting 429 responses", "grades": {"rate-limits": 1.0, "error-codes": 0.5}}
+{"id": "q06", "query": "what is the burst limit", "grades": {"rate-limits": 1.0}}
+{"id": "q07", "query": "how many requests per minute am I allowed", "grades": {"rate-limits": 1.0, "usage-quotas": 0.5}}
+{"id": "q08", "query": "how do I verify a webhook signature", "grades": {"webhooks": 1.0}}
+{"id": "q09", "query": "webhook retry behaviour", "grades": {"webhooks": 1.0}}
+{"id": "q10", "query": "my endpoint keeps receiving the same event twice", "grades": {"webhooks": 1.0}}
+{"id": "q11", "query": "ERR_4021", "grades": {"error-codes": 1.0}}
+{"id": "q12", "query": "what does ERR_5003 mean", "grades": {"error-codes": 1.0}}
+{"id": "q13", "query": "which errors are safe to retry", "grades": {"error-codes": 1.0, "rate-limits": 0.5}}
+{"id": "q14", "query": "install the python sdk", "grades": {"sdk-quickstart-python": 1.0}}
+{"id": "q15", "query": "python example for listing datasets", "grades": {"sdk-quickstart-python": 1.0}}
+{"id": "q16", "query": "async client for asyncio", "grades": {"sdk-quickstart-python": 1.0}}
+{"id": "q17", "query": "node sdk installation", "grades": {"sdk-quickstart-node": 1.0}}
+{"id": "q18", "query": "typescript types for the client", "grades": {"sdk-quickstart-node": 1.0}}
+{"id": "q19", "query": "does the sdk work on cloudflare workers", "grades": {"sdk-quickstart-node": 1.0}}
+{"id": "q20", "query": "how do I upgrade my plan", "grades": {"billing-and-plans": 1.0}}
+{"id": "q21", "query": "when am I invoiced", "grades": {"billing-and-plans": 1.0}}
+{"id": "q22", "query": "what happens if my payment fails", "grades": {"billing-and-plans": 1.0}}
+{"id": "q23", "query": "storage limit on the team plan", "grades": {"usage-quotas": 1.0, "billing-and-plans": 0.5}}
+{"id": "q24", "query": "what happens when I exceed my quota", "grades": {"usage-quotas": 1.0}}
+{"id": "q25", "query": "how much does overage cost", "grades": {"usage-quotas": 1.0}}
+{"id": "q26", "query": "set up SAML single sign on", "grades": {"sso-saml": 1.0}}
+{"id": "q27", "query": "which identity providers are supported", "grades": {"sso-saml": 1.0}}
+{"id": "q28", "query": "can I force everyone to log in with SSO", "grades": {"sso-saml": 1.0}}
+{"id": "q29", "query": "what can a viewer do", "grades": {"rbac-roles": 1.0}}
+{"id": "q30", "query": "how do I make someone an admin", "grades": {"rbac-roles": 1.0}}
+{"id": "q31", "query": "difference between owner and admin", "grades": {"rbac-roles": 1.0}}
+{"id": "q32", "query": "how long are deleted records kept", "grades": {"data-retention": 1.0}}
+{"id": "q33", "query": "GDPR erasure request", "grades": {"data-retention": 1.0, "security-policy": 0.5}}
+{"id": "q34", "query": "how long are audit logs kept", "grades": {"data-retention": 1.0}}
+{"id": "q35", "query": "are you SOC 2 compliant", "grades": {"security-policy": 1.0}}
+{"id": "q36", "query": "how is data encrypted at rest", "grades": {"security-policy": 1.0}}
+{"id": "q37", "query": "how do I report a vulnerability", "grades": {"security-policy": 1.0}}
+{"id": "q38", "query": "who declares an incident", "grades": {"incident-response": 1.0}}
+{"id": "q39", "query": "what are the severity levels", "grades": {"incident-response": 1.0, "support-slas": 0.5}}
+{"id": "q40", "query": "when is a postmortem required", "grades": {"incident-response": 1.0}}
+{"id": "q41", "query": "how long is an on call shift", "grades": {"oncall-rotation": 1.0}}
+{"id": "q42", "query": "how do I swap an on call shift", "grades": {"oncall-rotation": 1.0}}
+{"id": "q43", "query": "I got paged at 3am, do I still work the next morning", "grades": {"oncall-rotation": 1.0}}
+{"id": "q44", "query": "how does code get deployed to production", "grades": {"deployment-pipeline": 1.0}}
+{"id": "q45", "query": "can I roll back a deploy", "grades": {"deployment-pipeline": 1.0, "database-migrations": 0.5}}
+{"id": "q46", "query": "can I deploy on a friday", "grades": {"deployment-pipeline": 1.0}}
+{"id": "q47", "query": "how do I add a column without locking the table", "grades": {"database-migrations": 1.0}}
+{"id": "q48", "query": "expand and contract pattern", "grades": {"database-migrations": 1.0}}
+{"id": "q49", "query": "creating an index on a large table", "grades": {"database-migrations": 1.0}}
+{"id": "q50", "query": "how do I ship code behind a flag", "grades": {"feature-flags": 1.0}}
+{"id": "q51", "query": "gradual percentage rollout", "grades": {"feature-flags": 1.0, "deployment-pipeline": 0.5}}
+{"id": "q52", "query": "kill switch for a risky code path", "grades": {"feature-flags": 1.0}}
+{"id": "q53", "query": "where are the dashboards", "grades": {"monitoring-and-alerts": 1.0}}
+{"id": "q54", "query": "how do I add an alert", "grades": {"monitoring-and-alerts": 1.0}}
+{"id": "q55", "query": "the pager keeps firing for nothing", "grades": {"monitoring-and-alerts": 1.0, "oncall-rotation": 0.5}}
+{"id": "q56", "query": "how often are backups taken", "grades": {"backups-and-restore": 1.0}}
+{"id": "q57", "query": "restore a database to a point in time", "grades": {"backups-and-restore": 1.0}}
+{"id": "q58", "query": "what is the RPO and RTO", "grades": {"backups-and-restore": 1.0}}
+{"id": "q59", "query": "response time for a critical ticket", "grades": {"support-slas": 1.0}}
+{"id": "q60", "query": "how do I contact support", "grades": {"support-slas": 1.0}}
