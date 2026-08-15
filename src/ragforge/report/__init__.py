@@ -9,6 +9,7 @@ from .html import (
 )
 from .terminal import (
     Painter,
+    force_utf8_output,
     render_eval,
     render_hits,
     render_sweep,
@@ -18,6 +19,7 @@ from .terminal import (
 
 __all__ = [
     "Painter",
+    "force_utf8_output",
     "render_eval",
     "render_eval_html",
     "render_hits",

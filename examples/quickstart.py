@@ -12,7 +12,7 @@ import os
 from ragforge import PipelineConfig, RagPipeline, evaluate, load_documents, load_queries
 from ragforge.config import expand_grid
 from ragforge.eval import compare, run_sweep
-from ragforge.report.terminal import render_eval, render_sweep
+from ragforge.report.terminal import force_utf8_output, render_eval, render_sweep
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 CORPUS = os.path.join(HERE, "corpus")
@@ -20,6 +20,7 @@ EVALSET = os.path.join(HERE, "evalset.jsonl")
 
 
 def main() -> None:
+    force_utf8_output()
     documents = load_documents(CORPUS)
     queries = load_queries(EVALSET)
     print(f"corpus: {len(documents)} documents · evalset: {len(queries)} queries\n")

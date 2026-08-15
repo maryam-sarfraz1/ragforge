@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import contextlib
 import os
 import sys
 from collections.abc import Sequence
@@ -16,6 +17,22 @@ GREEN = "\033[32m"
 YELLOW = "\033[33m"
 RED = "\033[31m"
 CYAN = "\033[36m"
+
+
+def force_utf8_output() -> None:
+    """Stop a legacy console encoding from turning output into a crash.
+
+    Windows terminals still default to cp1252, which cannot encode the ``≥``, ``·``
+    and ``—`` these tables print. Every entry point that renders them needs this,
+    not just the CLI: ``examples/quickstart.py`` prints the same characters and died
+    with ``UnicodeEncodeError`` partway through its own output.
+    """
+    for stream in (sys.stdout, sys.stderr):
+        reconfigure = getattr(stream, "reconfigure", None)
+        if reconfigure is not None:
+            # Detached or already-closed streams raise; never fail a run over output setup.
+            with contextlib.suppress(ValueError, OSError):
+                reconfigure(encoding="utf-8", errors="replace")
 
 
 def supports_color(stream=None) -> bool:

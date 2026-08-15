@@ -142,7 +142,7 @@ def test_non_ascii_output_survives_a_legacy_console(tmp_path):
     so a passing gate exited non-zero."""
     import io
 
-    from ragforge.cli import _force_utf8_output
+    from ragforge.report.terminal import force_utf8_output
 
     legacy = io.TextIOWrapper(io.BytesIO(), encoding="cp1252", errors="strict")
     with pytest.raises(UnicodeEncodeError):
@@ -153,9 +153,23 @@ def test_non_ascii_output_survives_a_legacy_console(tmp_path):
     original = sys.stdout
     sys.stdout = stream
     try:
-        _force_utf8_output()
+        force_utf8_output()
         sys.stdout.write("recall ≥ 0.9 · p95 — ok")
         sys.stdout.flush()
     finally:
         sys.stdout = original
     assert stream.encoding.lower().replace("-", "") == "utf8"
+
+
+def test_example_scripts_guard_their_own_output():
+    """The guard used to live in ``cli.main`` only, so ``examples/quickstart.py`` —
+    which prints the same ``·`` and ``→`` — still died partway through on cp1252."""
+    import os
+
+    root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    source = os.path.join(root, "examples", "quickstart.py")
+    if not os.path.exists(source):  # installed-from-wheel checkouts ship no examples
+        pytest.skip("examples/ not present")
+    with open(source, encoding="utf-8") as handle:
+        text = handle.read()
+    assert "force_utf8_output()" in text

@@ -13,7 +13,6 @@ usable as a retrieval regression gate in CI.
 from __future__ import annotations
 
 import argparse
-import contextlib
 import json
 import os
 import sys
@@ -28,7 +27,13 @@ from .eval.sweep import run_sweep
 from .loaders import load_documents, load_queries, validate_eval_set
 from .pipeline import RagPipeline
 from .report.html import write_eval_report, write_sweep_report
-from .report.terminal import render_eval, render_hits, render_sweep, render_table
+from .report.terminal import (
+    force_utf8_output,
+    render_eval,
+    render_hits,
+    render_sweep,
+    render_table,
+)
 
 DEFAULT_INDEX = ".ragforge"
 
@@ -359,24 +364,10 @@ def build_parser() -> argparse.ArgumentParser:
     return parser
 
 
-def _force_utf8_output() -> None:
-    """Stop a legacy console encoding from turning output into a crash.
-
-    Windows terminals still default to cp1252, which cannot encode the ``≥``, ``·``
-    and ``—`` this CLI prints. Worse, ``UnicodeEncodeError`` subclasses ``ValueError``,
-    so without this it was caught below and reported as a usage error — turning a
-    cosmetic problem into a non-zero exit and a red CI run.
-    """
-    for stream in (sys.stdout, sys.stderr):
-        reconfigure = getattr(stream, "reconfigure", None)
-        if reconfigure is not None:
-            # Detached or already-closed streams raise; never fail a run over output setup.
-            with contextlib.suppress(ValueError, OSError):
-                reconfigure(encoding="utf-8", errors="replace")
-
-
 def main(argv: Sequence[str] | None = None) -> int:
-    _force_utf8_output()
+    # Must precede any output: UnicodeEncodeError subclasses ValueError, so an
+    # unencodable character would be caught below and misreported as a usage error.
+    force_utf8_output()
     parser = build_parser()
     args = parser.parse_args(argv)
     try:
